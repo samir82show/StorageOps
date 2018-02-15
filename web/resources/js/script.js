@@ -7,8 +7,9 @@ function targetHostRequired() {
 
 function targetSwitch() {
     if (document.getElementById("shareType").value === "2") {
-        document.getElementById("targetHosts").readOnly = false;
+        document.getElementById("targetHosts").disabled = false;
     } else {
-        document.getElementById("targetHosts").readOnly = true;
+        document.getElementById("targetHosts").value = null;
+        document.getElementById("targetHosts").disabled = true;
     }
 }

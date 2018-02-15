@@ -8,7 +8,10 @@
         <link rel="shortcut icon" href=""/>
     </h:head>
     <h:body>
+
         <f:view>
+
+
             <h:form prependId="false">
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
@@ -24,7 +27,7 @@
                     <h:outputLabel value="SizeInGB:" for="sizeInGB" />
                     <h:inputText id="sizeInGB" value="#{controller.storageForm.sizeInGB}" title="SizeInGB" required="true" requiredMessage="The SizeInGB field is required."/>
                     <h:outputLabel value="TargetHosts:" for="targetHosts" />
-                    <h:inputTextarea id="targetHosts" value="#{controller.storageForm.targetHosts}" title="TargetHosts" readonly="true"/>
+                    <h:inputTextarea id="targetHosts" value="#{controller.storageForm.targetHosts}" title="TargetHosts" disabled="true"/>
                     <h:outputLabel value="OwnerEmail:" for="ownerEmail" />
                     <h:inputText id="ownerEmail" value="#{controller.storageForm.ownerEmail}" title="OwnerEmail" required="true" requiredMessage="The OwnerEmail field is required."/>
                     <h:outputLabel value="TeamEmail:" for="teamEmail" />
@@ -34,9 +37,11 @@
                     <h:outputLabel value="Comments:" for="comments" />
                     <h:inputTextarea id="comments" value="#{controller.storageForm.comments}" title="Comments" />
                 </h:panelGrid>
-                <h:commandButton value="Submit" action="#{controller.createForm()}"/>
+                <h:commandButton action="#{controller.createStorageForm()}" value="submit"/>
             </h:form>
         </f:view>
+        
+        <h:link value="List all" outcome="list_all"/>
         <h:outputScript library="js" name="script.js"/>
     </h:body>
 </html>
