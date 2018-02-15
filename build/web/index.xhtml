@@ -8,36 +8,36 @@
         <link rel="shortcut icon" href=""/>
     </h:head>
     <h:body>
-
         <f:view>
             <h:form prependId="false">
-                <h:panelGrid columns="2" id="pgrid">
-                    <h:outputLabel value="ITSM Request no."/>
-                    <h:inputText/>
-                    <h:outputLabel value="Share Type"/>
-                    <h:selectOneListbox id="share_type" onchange="checkType();">
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ITSMRequestNo:" for="ITSMRequestNo" />
+                    <h:inputText id="ITSMRequestNo" value="#{controller.storageForm.ITSMRequestNo}" title="ITSMRequestNo" required="true" requiredMessage="The ITSMRequestNo field is required."/>
+                    <h:outputLabel value="ShareType:" for="shareType" />
+                    <h:selectOneListbox id="shareType" value="#{controller.storageForm.shareType}" title="ShareType" required="true" requiredMessage="The ShareType field is required." onchange="targetSwitch()">
                         <f:selectItem itemValue="1" itemLabel="CIFS" />
-                        <f:selectItem itemValue="2" itemLabel="NFS"/>
+                        <f:selectItem itemValue="2" itemLabel="NFS" />
                     </h:selectOneListbox>
-                    <h:outputLabel value="Share Name"/>
-                    <h:inputText id="name"/>
-                    <h:outputLabel value="Size (GB)"/>
-                    <h:inputText id="size"/>
-                    <h:outputLabel value="Owner Email" id="owner_email_label"/>
-                    <h:inputText id="owner_email"/>
-                    <h:outputLabel value="Team Email"/>
-                    <h:inputText id="group_email"/>
-                    <h:outputLabel value="Expected growth"/>
-                    <h:inputText id="egrowth"/>
-                    <h:outputLabel value="Comment"/>
-                    <h:inputTextarea id="comment"/>
+                    <h:outputLabel value="ShareName:" for="shareName" />
+                    <h:inputText id="shareName" value="#{controller.storageForm.shareName}" title="ShareName" required="true" requiredMessage="The ShareName field is required."/>
+                    <h:outputLabel value="SizeInGB:" for="sizeInGB" />
+                    <h:inputText id="sizeInGB" value="#{controller.storageForm.sizeInGB}" title="SizeInGB" required="true" requiredMessage="The SizeInGB field is required."/>
+                    <h:outputLabel value="TargetHosts:" for="targetHosts" />
+                    <h:inputTextarea id="targetHosts" value="#{controller.storageForm.targetHosts}" title="TargetHosts" readonly="true"/>
+                    <h:outputLabel value="OwnerEmail:" for="ownerEmail" />
+                    <h:inputText id="ownerEmail" value="#{controller.storageForm.ownerEmail}" title="OwnerEmail" required="true" requiredMessage="The OwnerEmail field is required."/>
+                    <h:outputLabel value="TeamEmail:" for="teamEmail" />
+                    <h:inputText id="teamEmail" value="#{controller.storageForm.teamEmail}" title="TeamEmail" required="true" requiredMessage="The TeamEmail field is required."/>
+                    <h:outputLabel value="ExpectedGrowth:" for="expectedGrowth" />
+                    <h:inputText id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" title="ExpectedGrowth" required="true" requiredMessage="The ExpectedGrowth field is required."/>
+                    <h:outputLabel value="Comments:" for="comments" />
+                    <h:inputTextarea id="comments" value="#{controller.storageForm.comments}" title="Comments" />
                 </h:panelGrid>
-                <h:commandButton value="Submit"/>
-                <h:outputScript library="js" name="script.js"/>
+                <h:commandButton value="Submit" action="#{controller.createForm()}"/>
             </h:form>
         </f:view>
-
-
+        <h:outputScript library="js" name="script.js"/>
     </h:body>
 </html>
 
