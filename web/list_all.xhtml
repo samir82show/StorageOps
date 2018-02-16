@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Storage Portal</title>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{controller.listStorageForms()}" var="item" bgcolor="#C4FF33" border="1">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ITSMRequestNo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ITSMRequestNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ShareType"/>
+                        </f:facet>
+                        <h:outputText value="#{item.shareType}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ShareName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.shareName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="SizeInGB"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sizeInGB}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="TargetHosts"/>
+                        </f:facet>
+                        <h:outputText value="#{item.targetHosts}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OwnerEmail"/>
+                        </f:facet>
+                        <h:link value="#{item.ownerEmail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="TeamEmail"/>
+                        </f:facet>
+                        <h:link value="#{item.teamEmail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ExpectedGrowth"/>
+                        </f:facet>
+                        <h:outputText value="#{item.expectedGrowth}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Comments"/>
+                        </f:facet>
+                        <h:outputText value="#{item.comments}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+        <h:link value="back" outcome="index"/>
+
+    </h:body>
+</html>
+

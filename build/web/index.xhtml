@@ -10,8 +10,6 @@
     <h:body>
 
         <f:view>
-
-
             <h:form prependId="false">
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
@@ -19,8 +17,8 @@
                     <h:inputText id="ITSMRequestNo" value="#{controller.storageForm.ITSMRequestNo}" title="ITSMRequestNo" required="true" requiredMessage="The ITSMRequestNo field is required."/>
                     <h:outputLabel value="ShareType:" for="shareType" />
                     <h:selectOneListbox id="shareType" value="#{controller.storageForm.shareType}" title="ShareType" required="true" requiredMessage="The ShareType field is required." onchange="targetSwitch()">
-                        <f:selectItem itemValue="1" itemLabel="CIFS" />
-                        <f:selectItem itemValue="2" itemLabel="NFS" />
+                        <f:selectItem itemValue="CIFS" itemLabel="CIFS" />
+                        <f:selectItem itemValue="NFS" itemLabel="NFS" />
                     </h:selectOneListbox>
                     <h:outputLabel value="ShareName:" for="shareName" />
                     <h:inputText id="shareName" value="#{controller.storageForm.shareName}" title="ShareName" required="true" requiredMessage="The ShareName field is required."/>
@@ -37,11 +35,12 @@
                     <h:outputLabel value="Comments:" for="comments" />
                     <h:inputTextarea id="comments" value="#{controller.storageForm.comments}" title="Comments" />
                 </h:panelGrid>
-                <h:commandButton action="#{controller.createStorageForm()}" value="submit"/>
+                <h:commandButton action="#{controller.createStorageForm()}" value="Submit"/>
             </h:form>
         </f:view>
-        
-        <h:link value="List all" outcome="list_all"/>
+
+        <h:link value="List all  " outcome="list_all"/>
+        <h:link value="  Search" outcome="search"/>
         <h:outputScript library="js" name="script.js"/>
     </h:body>
 </html>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="shortcut icon" href=""/>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <h:outputScript library="js" name="jquery.js"/>
+        <h:outputScript library="js" name="jquery-ui.js"/>
+        <script>
+
+            $(function () {
+                var availableTags = "#{controller.findByShareName()}".split(",");
+                $("#tags").autocomplete({
+                    source: availableTags
+                });
+            });
+        </script>
+
+    </h:head>
+    <h:body>
+
+        <f:view>
+            <h:form prependId="false">
+                <h:inputText id="tags"/>
+                <h:commandButton value="go"/>
+            </h:form>
+        </f:view>
+
+        <h:outputScript library="js" name="script.js"/>
+
+
+    </h:body>
+</html>
+

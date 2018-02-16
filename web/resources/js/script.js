@@ -6,7 +6,7 @@ function targetHostRequired() {
 }
 
 function targetSwitch() {
-    if (document.getElementById("shareType").value === "2") {
+    if (document.getElementById("shareType").value === "NFS") {
         document.getElementById("targetHosts").disabled = false;
     } else {
         document.getElementById("targetHosts").value = null;
