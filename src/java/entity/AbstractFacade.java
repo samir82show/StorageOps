@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author sawad
- */
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
@@ -36,10 +27,6 @@ public abstract class AbstractFacade<T> {
 
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
-    }
-    
-    public List<String> findByShareName() {
-        return getEntityManager().createNamedQuery("StorageForm.findShareNames").getResultList();
     }
 
     public List<T> findAll() {

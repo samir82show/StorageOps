@@ -10,6 +10,8 @@
     <h:body>
 
         <f:view>
+
+
             <h:form prependId="false">
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
@@ -21,29 +23,24 @@
                         <f:selectItem itemValue="NFS" itemLabel="NFS" />
                     </h:selectOneListbox>
                     <h:outputLabel value="ShareName:" for="shareName" />
-                    <h:inputText id="shareName" value="#{controller.storageForm.shareName}" title="ShareName" required="false" requiredMessage="The ShareName field is required."/>
+                    <h:inputText id="shareName" value="#{controller.storageForm.shareName}" title="ShareName" />
                     <h:outputLabel value="SizeInGB:" for="sizeInGB" />
-                    <h:inputText id="sizeInGB" value="#{controller.storageForm.sizeInGB}" title="SizeInGB" required="false" requiredMessage="The SizeInGB field is required."/>
+                    <h:inputText id="sizeInGB" value="#{controller.storageForm.sizeInGB}" title="SizeInGB" />
+                    <h:outputLabel value="ExpectedGrowth:" for="expectedGrowth" />
+                    <h:inputText id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" title="ExpectedGrowth" />
                     <h:outputLabel value="TargetHosts:" for="targetHosts" />
                     <h:inputTextarea id="targetHosts" value="#{controller.storageForm.targetHosts}" title="TargetHosts" disabled="true"/>
                     <h:outputLabel value="OwnerEmail:" for="ownerEmail" />
-                    <h:inputText id="ownerEmail" value="#{controller.storageForm.ownerEmail}" title="OwnerEmail" required="false" requiredMessage="The OwnerEmail field is required."/>
+                    <h:inputText id="ownerEmail" value="#{controller.storageForm.ownerEmail}" title="OwnerEmail" />
                     <h:outputLabel value="TeamEmail:" for="teamEmail" />
-                    <h:inputText id="teamEmail" value="#{controller.storageForm.teamEmail}" title="TeamEmail" required="false" requiredMessage="The TeamEmail field is required."/>
-                    <h:outputLabel value="ExpectedGrowth:" for="expectedGrowth" />
-                    <h:inputText id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" title="ExpectedGrowth" required="false" requiredMessage="The ExpectedGrowth field is required."/>
+                    <h:inputText id="teamEmail" value="#{controller.storageForm.teamEmail}" title="TeamEmail" />
                     <h:outputLabel value="Comments:" for="comments" />
                     <h:inputTextarea id="comments" value="#{controller.storageForm.comments}" title="Comments" />
                 </h:panelGrid>
-                <h:commandButton action="#{controller.createStorageForm()}" value="Submit">
-                </h:commandButton>
-                <h:commandButton action="#{controller.fetchForm()}" value="Search">
-                </h:commandButton>
+                <h:commandButton value="Submit" action="#{controller.createStorageForm()}"/>
             </h:form>
         </f:view>
-        
-        <h:link value="List all  " outcome="list_all"/>
-        <h:link value="  Search" outcome="search"/>
+
         <h:outputScript library="js" name="script.js"/>
     </h:body>
 </html>

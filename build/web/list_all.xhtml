@@ -14,7 +14,7 @@
 
             <h:form>
                 <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{controller.listStorageForms()}" var="item" bgcolor="#C4FF33" border="1">
+                <h:dataTable value="#{controller.listStorageForms()}" var="item">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="ITSMRequestNo"/>
@@ -23,15 +23,33 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ShareType"/>
+                            <h:outputText value="Comments"/>
                         </f:facet>
-                        <h:outputText value="#{item.shareType}"/>
+                        <h:outputText value="#{item.comments}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ExpectedGrowth"/>
+                        </f:facet>
+                        <h:outputText value="#{item.expectedGrowth}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OwnerEmail"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ownerEmail}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="ShareName"/>
                         </f:facet>
                         <h:outputText value="#{item.shareName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ShareType"/>
+                        </f:facet>
+                        <h:outputText value="#{item.shareType}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -47,32 +65,34 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="OwnerEmail"/>
-                        </f:facet>
-                        <h:link value="#{item.ownerEmail}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
                             <h:outputText value="TeamEmail"/>
                         </f:facet>
-                        <h:link value="#{item.teamEmail}"/>
+                        <h:outputText value="#{item.teamEmail}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ExpectedGrowth"/>
+                            <h:outputText value="iTSMRequestNo"/>
                         </f:facet>
-                        <h:outputText value="#{item.expectedGrowth}"/>
+                        <h:outputText value="#{item.iTSMRequestNo}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Comments"/>
+                            <h:outputText value="RequestDate"/>
                         </f:facet>
-                        <h:outputText value="#{item.comments}"/>
+                        <h:outputText value="#{item.requestDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Status"/>
+                        </f:facet>
+                        <h:outputText value="#{item.status}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>
         </f:view>
-        <h:link value="back" outcome="index"/>
+
 
     </h:body>
 </html>

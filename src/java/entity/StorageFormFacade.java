@@ -9,6 +9,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author sawad
+ */
 @Stateless
 public class StorageFormFacade extends AbstractFacade<StorageForm> {
 

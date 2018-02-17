@@ -3,6 +3,7 @@ package controller;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -32,6 +33,8 @@ public class Controller implements Serializable {
 //        storageForm.setShareType("NFS");
 //        storageForm.setSizeInGB(4433);
 //        storageForm.setTargetHosts("1123...3434..345345");
+        storageForm.setRequestDate(new Date());
+        storageForm.setStatus("New");
     }
 
     public StorageForm getStorageForm() {
@@ -56,14 +59,14 @@ public class Controller implements Serializable {
         }
     }
 
-    public String findByShareName() {
-        String str = "";
-        for (String s : storageFormFacade.findByShareName()) {
-            str += s + ",";
-        }
-        System.out.println("shares: " + str);
-        return str.replaceAll(",$", "");
-    }
+//    public String findByShareName() {
+//        String str = "";
+//        for (String s : storageFormFacade.findByShareName()) {
+//            str += s + ",";
+//        }
+//        System.out.println("shares: " + str);
+//        return str.replaceAll(",$", "");
+//    }
 
     public void fetchForm() {
         StorageForm tempForm = storageFormFacade.find(storageForm.getITSMRequestNo());
