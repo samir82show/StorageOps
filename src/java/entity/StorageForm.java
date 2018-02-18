@@ -29,16 +29,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "StorageForm.findAll", query = "SELECT s FROM StorageForm s")
-    , @NamedQuery(name = "StorageForm.findByITSMRequestNo", query = "SELECT s FROM StorageForm s WHERE s.iTSMRequestNo = :iTSMRequestNo")
+    , @NamedQuery(name = "StorageForm.findByRequestNo", query = "SELECT s FROM StorageForm s WHERE s.requestNo = :requestNo")
     , @NamedQuery(name = "StorageForm.findByComments", query = "SELECT s FROM StorageForm s WHERE s.comments = :comments")
     , @NamedQuery(name = "StorageForm.findByExpectedGrowth", query = "SELECT s FROM StorageForm s WHERE s.expectedGrowth = :expectedGrowth")
     , @NamedQuery(name = "StorageForm.findByOwnerEmail", query = "SELECT s FROM StorageForm s WHERE s.ownerEmail = :ownerEmail")
     , @NamedQuery(name = "StorageForm.findByShareName", query = "SELECT s FROM StorageForm s WHERE s.shareName = :shareName")
     , @NamedQuery(name = "StorageForm.findByShareType", query = "SELECT s FROM StorageForm s WHERE s.shareType = :shareType")
-    , @NamedQuery(name = "StorageForm.findBySizeInGB", query = "SELECT s FROM StorageForm s WHERE s.sizeInGB = :sizeInGB")
+    , @NamedQuery(name = "StorageForm.findBySize", query = "SELECT s FROM StorageForm s WHERE s.size = :size")
     , @NamedQuery(name = "StorageForm.findByTargetHosts", query = "SELECT s FROM StorageForm s WHERE s.targetHosts = :targetHosts")
     , @NamedQuery(name = "StorageForm.findByTeamEmail", query = "SELECT s FROM StorageForm s WHERE s.teamEmail = :teamEmail")
-    , @NamedQuery(name = "StorageForm.findByRequestDate", query = "SELECT s FROM StorageForm s WHERE s.requestDate = :requestDate")
+    , @NamedQuery(name = "StorageForm.findByLastUpdatedDate", query = "SELECT s FROM StorageForm s WHERE s.lastUpdatedDate = :lastUpdatedDate")
     , @NamedQuery(name = "StorageForm.findByStatus", query = "SELECT s FROM StorageForm s WHERE s.status = :status")})
 public class StorageForm implements Serializable {
 
@@ -47,45 +47,47 @@ public class StorageForm implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "ITSMRequestNo")
-    private String iTSMRequestNo;
+    @Column(name = "request_no")
+    private String requestNo;
     @Size(max = 255)
-    @Column(name = "Comments")
+    @Column(name = "comments")
     private String comments;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Expected_Growth")
+    @Column(name = "expected_growth")
     private int expectedGrowth;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "Owner_Email")
+    @Column(name = "owner_email")
     private String ownerEmail;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "Share_Name")
+    @Column(name = "share_name")
     private String shareName;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "Share_Type")
+    @Column(name = "share_type")
     private String shareType;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Size_In_GB")
-    private int sizeInGB;
+    @Column(name = "size")
+    private int size;
     @Size(max = 255)
-    @Column(name = "Target_Hosts")
+    @Column(name = "target_Hosts")
     private String targetHosts;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "Team_Email")
+    @Column(name = "team_email")
     private String teamEmail;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "last_updated_date")
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "Last_Updated_Date", nullable = false)
-    private Date requestDate;
+    private Date lastUpdatedDate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -95,27 +97,12 @@ public class StorageForm implements Serializable {
     public StorageForm() {
     }
 
-    public StorageForm(String iTSMRequestNo) {
-        this.iTSMRequestNo = iTSMRequestNo;
+    public String getRequestNo() {
+        return requestNo;
     }
 
-    public StorageForm(String iTSMRequestNo, int expectedGrowth, String ownerEmail, String shareName, String shareType, int sizeInGB, String teamEmail, String status) {
-        this.iTSMRequestNo = iTSMRequestNo;
-        this.expectedGrowth = expectedGrowth;
-        this.ownerEmail = ownerEmail;
-        this.shareName = shareName;
-        this.shareType = shareType;
-        this.sizeInGB = sizeInGB;
-        this.teamEmail = teamEmail;
-        this.status = status;
-    }
-
-    public String getITSMRequestNo() {
-        return iTSMRequestNo;
-    }
-
-    public void setITSMRequestNo(String iTSMRequestNo) {
-        this.iTSMRequestNo = iTSMRequestNo;
+    public void setRequestNo(String requestNo) {
+        this.requestNo = requestNo;
     }
 
     public String getComments() {
@@ -158,12 +145,12 @@ public class StorageForm implements Serializable {
         this.shareType = shareType;
     }
 
-    public int getSizeInGB() {
-        return sizeInGB;
+    public int getSize() {
+        return size;
     }
 
-    public void setSizeInGB(int sizeInGB) {
-        this.sizeInGB = sizeInGB;
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public String getTargetHosts() {
@@ -182,23 +169,13 @@ public class StorageForm implements Serializable {
         this.teamEmail = teamEmail;
     }
 
-    public String getiTSMRequestNo() {
-        return iTSMRequestNo;
+    public Date getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
 
-    public void setiTSMRequestNo(String iTSMRequestNo) {
-        this.iTSMRequestNo = iTSMRequestNo;
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
     }
-
-    public Date getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    
 
     public String getStatus() {
         return status;
@@ -211,7 +188,7 @@ public class StorageForm implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (iTSMRequestNo != null ? iTSMRequestNo.hashCode() : 0);
+        hash += (requestNo != null ? requestNo.hashCode() : 0);
         return hash;
     }
 
@@ -222,7 +199,7 @@ public class StorageForm implements Serializable {
             return false;
         }
         StorageForm other = (StorageForm) object;
-        if ((this.iTSMRequestNo == null && other.iTSMRequestNo != null) || (this.iTSMRequestNo != null && !this.iTSMRequestNo.equals(other.iTSMRequestNo))) {
+        if ((this.requestNo == null && other.requestNo != null) || (this.requestNo != null && !this.requestNo.equals(other.requestNo))) {
             return false;
         }
         return true;
@@ -230,7 +207,7 @@ public class StorageForm implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.StorageForm[ iTSMRequestNo=" + iTSMRequestNo + " ]";
+        return "StorageForm{" + "requestNo=" + requestNo + ", comments=" + comments + ", expectedGrowth=" + expectedGrowth + ", ownerEmail=" + ownerEmail + ", shareName=" + shareName + ", shareType=" + shareType + ", size=" + size + ", targetHosts=" + targetHosts + ", teamEmail=" + teamEmail + ", lastUpdatedDate=" + lastUpdatedDate + ", status=" + status + '}';
     }
 
 }

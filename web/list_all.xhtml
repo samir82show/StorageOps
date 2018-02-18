@@ -2,24 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Storage Portal</title>
+        <link rel="shortcut icon" href=""/>
+        <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
     <h:body>
-
         <f:view>
-
-
-            <h:form>
+            <h:form prependId="false">
                 <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{controller.listStorageForms()}" var="item">
+                <h:dataTable id="request_forms" value="#{controller.listStorageForms()}" var="item">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ITSMRequestNo"/>
+                            <h:outputText value="RequestNo"/>
                         </f:facet>
-                        <h:outputText value="#{item.ITSMRequestNo}"/>
+                        <h:outputText value="#{item.requestNo}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -53,9 +51,9 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="SizeInGB"/>
+                            <h:outputText value="Size"/>
                         </f:facet>
-                        <h:outputText value="#{item.sizeInGB}"/>
+                        <h:outputText value="#{item.size}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -71,15 +69,9 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="iTSMRequestNo"/>
+                            <h:outputText value="LastUpdatedDate"/>
                         </f:facet>
-                        <h:outputText value="#{item.iTSMRequestNo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="RequestDate"/>
-                        </f:facet>
-                        <h:outputText value="#{item.requestDate}">
+                        <h:outputText value="#{item.lastUpdatedDate}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                     </h:column>
@@ -92,7 +84,6 @@
                 </h:dataTable>
             </h:form>
         </f:view>
-
 
     </h:body>
 </html>
