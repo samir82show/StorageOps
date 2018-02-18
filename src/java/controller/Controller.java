@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.common.primitives.UnsignedInteger;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
@@ -45,15 +46,15 @@ public class Controller implements Serializable {
         if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
             storageFormFacade.create(storageForm);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
-//            storageForm.setComments(null);
-//            storageForm.setExpectedGrowth(0);
-//            storageForm.setRequestNo(null);
-//            storageForm.setOwnerEmail(null);
-//            storageForm.setTeamEmail(null);
-//            storageForm.setShareName(null);
-//            storageForm.setShareType(null);
-//            storageForm.setSize(0);
-//            storageForm.setTargetHosts(null);
+            storageForm.setComments(null);
+            storageForm.setExpectedGrowth(null);
+            storageForm.setRequestNo(null);
+            storageForm.setOwnerEmail(null);
+            storageForm.setTeamEmail(null);
+            storageForm.setShareName(null);
+            storageForm.setShareType(null);
+            storageForm.setSize(0);
+            storageForm.setTargetHosts(null);
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " already exists."));
         }

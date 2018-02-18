@@ -55,7 +55,7 @@ public class StorageForm implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "expected_growth")
-    private int expectedGrowth;
+    private Integer expectedGrowth;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -74,7 +74,7 @@ public class StorageForm implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "size")
-    private int size;
+    private Integer size;
     @Size(max = 255)
     @Column(name = "target_Hosts")
     private String targetHosts;
@@ -113,13 +113,15 @@ public class StorageForm implements Serializable {
         this.comments = comments;
     }
 
-    public int getExpectedGrowth() {
+    public Integer getExpectedGrowth() {
         return expectedGrowth;
     }
 
-    public void setExpectedGrowth(int expectedGrowth) {
+    public void setExpectedGrowth(Integer expectedGrowth) {
         this.expectedGrowth = expectedGrowth;
     }
+
+    
 
     public String getOwnerEmail() {
         return ownerEmail;
@@ -145,14 +147,16 @@ public class StorageForm implements Serializable {
         this.shareType = shareType;
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Integer size) {
         this.size = size;
     }
 
+    
+    
     public String getTargetHosts() {
         return targetHosts;
     }
