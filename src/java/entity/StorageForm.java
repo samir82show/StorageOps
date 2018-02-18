@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "StorageForm.findByExpectedGrowth", query = "SELECT s FROM StorageForm s WHERE s.expectedGrowth = :expectedGrowth")
     , @NamedQuery(name = "StorageForm.findByOwnerEmail", query = "SELECT s FROM StorageForm s WHERE s.ownerEmail = :ownerEmail")
     , @NamedQuery(name = "StorageForm.findByShareName", query = "SELECT s FROM StorageForm s WHERE s.shareName = :shareName")
+    , @NamedQuery(name = "StorageForm.findShareNames", query = "SELECT s.shareName FROM StorageForm s")
     , @NamedQuery(name = "StorageForm.findByShareType", query = "SELECT s FROM StorageForm s WHERE s.shareType = :shareType")
     , @NamedQuery(name = "StorageForm.findBySize", query = "SELECT s FROM StorageForm s WHERE s.size = :size")
     , @NamedQuery(name = "StorageForm.findByTargetHosts", query = "SELECT s FROM StorageForm s WHERE s.targetHosts = :targetHosts")
@@ -121,8 +122,6 @@ public class StorageForm implements Serializable {
         this.expectedGrowth = expectedGrowth;
     }
 
-    
-
     public String getOwnerEmail() {
         return ownerEmail;
     }
@@ -155,8 +154,6 @@ public class StorageForm implements Serializable {
         this.size = size;
     }
 
-    
-    
     public String getTargetHosts() {
         return targetHosts;
     }

@@ -60,14 +60,15 @@ public class Controller implements Serializable {
         }
     }
 
-//    public String findByShareName() {
-//        String str = "";
-//        for (String s : storageFormFacade.findByShareName()) {
-//            str += s + ",";
-//        }
-//        System.out.println("shares: " + str);
-//        return str.replaceAll(",$", "");
-//    }
+    public String findByShareName() {
+        String str = "";
+        for (String s : storageFormFacade.findShareNames()) {
+            str += s + ",";
+        }
+        System.out.println("shares: " + str);
+        return str.replaceAll(",$", "");
+    }
+    
     public void fetchForm() {
         StorageForm tempForm = storageFormFacade.find(storageForm.getRequestNo());
         if (tempForm == null) {
