@@ -8,12 +8,12 @@ function targetHostRequired() {
 function targetSwitch() {
     if (document.getElementById("shareType").value === "NFS") {
         document.getElementById("targetHosts").disabled = false;
-        document.getElementById("targetHosts").style.background = "#cccccc";
+        document.getElementById("targetHosts").style.background = "white";
         document.getElementById("targetHosts").required = true;
     } else {
-        document.getElementById("targetHosts").value = null;
+//        document.getElementById("targetHosts").value = null;
         document.getElementById("targetHosts").disabled = true;
-        document.getElementById("targetHosts").style.background = "#044344";
+        document.getElementById("targetHosts").style.background = "beige";
         document.getElementById("targetHosts").required = false;
     }
 }

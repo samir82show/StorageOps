@@ -35,8 +35,8 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().createQuery(cq).getResultList();
     }
     
-    public List<String> findShareNames() {
-        return getEntityManager().createNamedQuery("StorageForm.findShareNames").getResultList();
+    public List<String> findRequests() {
+        return getEntityManager().createNamedQuery("StorageForm.findRequestNo").getResultList();
     }
 
     public List<T> findRange(int[] range) {

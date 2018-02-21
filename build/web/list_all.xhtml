@@ -10,32 +10,16 @@
     </h:head>
     <h:body>
         <f:view>
+
+
             <h:form prependId="false">
-                <h1><h:outputText value="NAS Requests"/></h1>
-                <h:dataTable id="request_forms" value="#{controller.listStorageForms()}" var="item">
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable id="request_table" value="#{controller.listStorageForms()}" var="item">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="RequestNo"/>
                         </f:facet>
                         <h:outputText value="#{item.requestNo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Comments"/>
-                        </f:facet>
-                        <h:outputText value="#{item.comments}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ExpectedGrowth"/>
-                        </f:facet>
-                        <h:outputText value="#{item.expectedGrowth}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="OwnerEmail"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ownerEmail}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -45,15 +29,29 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Size (GBs)"/>
+                        </f:facet>
+                        <h:outputText value="#{item.size}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ExpectedGrowth (GBs)"/>
+                        </f:facet>
+                        <h:outputText value="#{item.expectedGrowth}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="ShareType"/>
                         </f:facet>
                         <h:outputText value="#{item.shareType}"/>
                     </h:column>
+
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Size"/>
+                            <h:outputText value="OwnerEmail"/>
                         </f:facet>
-                        <h:outputText value="#{item.size}"/>
+                        <h:outputText value="#{item.ownerEmail}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -81,9 +79,23 @@
                         </f:facet>
                         <h:outputText value="#{item.status}"/>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CreatedBy"/>
+                        </f:facet>
+                        <h:outputText value="#{item.createdBy}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Comments"/>
+                        </f:facet>
+                        <h:outputText value="#{item.comments}"/>
+                    </h:column>
+
                 </h:dataTable>
             </h:form>
         </f:view>
+
 
     </h:body>
 </html>

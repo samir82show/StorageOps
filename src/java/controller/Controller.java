@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.common.primitives.UnsignedInteger;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
@@ -35,6 +34,7 @@ public class Controller implements Serializable {
 //        storageForm.setSizeInGB(4433);
 //        storageForm.setTargetHosts("1123...3434..345345");
         storageForm.setLastUpdatedDate(new Date());
+        storageForm.setCreatedBy("admin");
         storageForm.setStatus("New");
     }
 
@@ -46,29 +46,20 @@ public class Controller implements Serializable {
         if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
             storageFormFacade.create(storageForm);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
-            storageForm.setComments(null);
-            storageForm.setExpectedGrowth(null);
-            storageForm.setRequestNo(null);
-            storageForm.setOwnerEmail(null);
-            storageForm.setTeamEmail(null);
-            storageForm.setShareName(null);
-            storageForm.setShareType(null);
-            storageForm.setSize(0);
-            storageForm.setTargetHosts(null);
+            flushValues();
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " already exists."));
         }
     }
 
-    public String findByShareName() {
+    public String findRequestNo() {
         String str = "";
-        for (String s : storageFormFacade.findShareNames()) {
+        for (String s : storageFormFacade.findRequests()) {
             str += s + ",";
         }
-        System.out.println("shares: " + str);
         return str.replaceAll(",$", "");
     }
-    
+
     public void fetchForm() {
         StorageForm tempForm = storageFormFacade.find(storageForm.getRequestNo());
         if (tempForm == null) {
@@ -76,12 +67,29 @@ public class Controller implements Serializable {
         } else {
             storageForm = tempForm;
         }
-//        storageForm = storageFormFacade.find("rf11112");
-        System.out.println("form is: " + storageForm.getRequestNo());
+    }
+
+    public void editForm() {
+        storageFormFacade.edit(storageForm);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " is edited."));
+
     }
 
     public List<StorageForm> listStorageForms() {
         return storageFormFacade.findAll();
     }
 
+    public void flushValues() {
+        storageForm.setComments(null);
+        storageForm.setExpectedGrowth(null);
+        storageForm.setRequestNo(null);
+        storageForm.setOwnerEmail(null);
+        storageForm.setTeamEmail(null);
+        storageForm.setShareName(null);
+        storageForm.setShareType(null);
+        storageForm.setSize(null);
+        storageForm.setLastUpdatedDate(null);
+        storageForm.setStatus(null);
+        storageForm.setCreatedBy(null);
+    }
 }
