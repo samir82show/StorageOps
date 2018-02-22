@@ -1,17 +1,16 @@
 
 #header {
-    text-align: center;   
+    /*text-align: center;*/   
 }
 
 #footer {
-    color: #ffffff;
+    position: fixed;
+    left: 10%;
+    bottom: 0;
+    width: 80%;
     background-color: #6EBEBF;
-    text-align: center;   
-    height:45px;
-    line-height: 40px;
-    margin-top: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
+    color: white;
+    text-align: center;
 
 }
 
@@ -24,7 +23,7 @@
 }
 
 #form_table {
-    margin-left: 600px;
+    margin-left: 700px;
 }
 
 input, textArea, select {
@@ -41,16 +40,47 @@ select {
 }
 
 .head {
-/*    margin-top: 0px;
-    line-height: 100px;
-    background-color: #6EBEBF;
-    color: #ffffff;
-    font-size: 20px;
+    margin-left: 750px;
+    /*    background-color: #6EBEBF;
+        color: #ffffff;*/
+    margin-right: 851px;
+}
+
+#result {
+    margin-left: 770px;
+    font-weight: bold;
+}
+
+#logo {
+    margin-left: 200px;
+}
+
+#mydate {
+    float: right;
+    margin-top: 40px;
+    margin-right: 200px;
+}
+
+#search_button {
+
+    margin-left: 833px;
+    margin-top: 10px;
+    width: 405px;
+}
+
+#search_table {
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+#tags {
+    height: 33px;
+}
+
+#find_button {
+    height: 39px;
+    width: 200px;
     font-family: serif;
-    height: 100px;
-*/    text-align: center;/*
-    padding-left: auto;
-    padding-right: auto;*/
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

@@ -21,17 +21,18 @@ public class Controller implements Serializable {
     private StorageFormFacade storageFormFacade;
     @Inject
     private StorageForm storageForm;
+    private String result;
 
     @PostConstruct
     public void init() {
 //        storageForm.setComments("my comments");
 //        storageForm.setExpectedGrowth(3445);
-//        storageForm.setITSMRequestNo("rf123234");
-//        storageForm.setOwnerEmail("aaaaa@sidar.org");
-//        storageForm.setTeamEmail("aaaaa@sidar.org");
+//        storageForm.setRequestNo("RF123234");
+//        storageForm.setOwnerEmail("aaaaa@sidra.org");
+//        storageForm.setTeamEmail("aaaaa@sidra.org");
 //        storageForm.setShareName("share name");
 //        storageForm.setShareType("NFS");
-//        storageForm.setSizeInGB(4433);
+//        storageForm.setSize(4433);
 //        storageForm.setTargetHosts("1123...3434..345345");
         storageForm.setLastUpdatedDate(new Date());
         storageForm.setCreatedBy("admin");
@@ -42,13 +43,19 @@ public class Controller implements Serializable {
         return storageForm;
     }
 
+    public String getResult() {
+        return result;
+    }
+
     public void createStorageForm() {
         if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
             storageFormFacade.create(storageForm);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
+            result = "Request form for " + storageForm.getShareName() + " submitted.";
             flushValues();
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " already exists."));
+            result = "Request " + storageForm.getRequestNo() + " already exists.";
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " already exists."));
         }
     }
 
