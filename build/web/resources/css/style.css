@@ -1,23 +1,19 @@
-
-#header {
-    /*text-align: center;*/   
-}
-
 #footer {
     position: fixed;
     left: 10%;
     bottom: 0;
-    width: 80%;
+    width: 81% ;
     background-color: #6EBEBF;
     color: white;
     text-align: center;
-
+    height: 50px;    
 }
 
 .frame {
     margin-left: 200px;
     margin-right: 200px;
-    max-width: 80%;
+/*    max-width: 80%;*/
+width: 81%;
     height: 20px;
     background-color: #6EBEBF;
 }
@@ -58,7 +54,7 @@ select {
 #mydate {
     float: right;
     margin-top: 40px;
-    margin-right: 200px;
+    margin-right: 160px;
 }
 
 #search_button {
@@ -83,6 +79,10 @@ select {
     font-family: serif;
 }
 
+#report_table {
+    margin-left: 200px;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #b2beb5;
     font-style: italic;
@@ -96,3 +96,10 @@ select {
 :-moz-placeholder { /* Firefox 18- */
     color: #b2beb5;
 }
+
+/*@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+}
+*/
