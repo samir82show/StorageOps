@@ -12,8 +12,8 @@
 .frame {
     margin-left: 200px;
     margin-right: 200px;
-/*    max-width: 80%;*/
-width: 81%;
+    /*    max-width: 80%;*/
+    width: 81%;
     height: 20px;
     background-color: #6EBEBF;
 }
@@ -37,8 +37,6 @@ select {
 
 .head {
     margin-left: 750px;
-    /*    background-color: #6EBEBF;
-        color: #ffffff;*/
     margin-right: 851px;
 }
 
@@ -79,8 +77,23 @@ select {
     font-family: serif;
 }
 
-#report_table {
+#report_table_form {
     margin-left: 200px;
+    border-radius: 5px;
+}
+
+#request_table {
+    border-radius: 5px;
+
+}
+
+th {
+    background-color: #6EBEBF; 
+}
+
+tr:hover {
+    background-color: #6EBEBF; 
+    color: white;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
