@@ -1,5 +1,6 @@
 package controller;
 
+import entity.SendEmail;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
@@ -21,6 +22,9 @@ public class Controller implements Serializable {
     private StorageFormFacade storageFormFacade;
     @Inject
     private StorageForm storageForm;
+    @Inject
+    private SendEmail sendEmail;
+
     private String result;
 
     @PostConstruct
@@ -28,7 +32,7 @@ public class Controller implements Serializable {
 //        storageForm.setComments("my comments");
 //        storageForm.setExpectedGrowth(3445);
 //        storageForm.setRequestNo("RF123234");
-//        storageForm.setOwnerEmail("aaaaa@sidra.org");
+//        storageForm.setOwnerEmail("sawad@sidra.org");
 //        storageForm.setTeamEmail("aaaaa@sidra.org");
 //        storageForm.setShareName("share name");
 //        storageForm.setShareType("NFS");
@@ -43,6 +47,10 @@ public class Controller implements Serializable {
         return storageForm;
     }
 
+    public SendEmail getSendEmail() {
+        return sendEmail;
+    }
+
     public String getResult() {
         return result;
     }
@@ -50,12 +58,12 @@ public class Controller implements Serializable {
     public void createStorageForm() {
         if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
             storageFormFacade.create(storageForm);
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
             result = "Request form for " + storageForm.getShareName() + " submitted.";
+            sendEmail.sendEmailHelper(storageForm);
             flushValues();
+
         } else {
             result = "Request " + storageForm.getRequestNo() + " already exists.";
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " already exists."));
         }
     }
 
@@ -70,7 +78,8 @@ public class Controller implements Serializable {
     public void fetchForm() {
         StorageForm tempForm = storageFormFacade.find(storageForm.getRequestNo());
         if (tempForm == null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " is not found."));
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " is not found."));
+            result = "Request " + storageForm.getRequestNo() + " is not found.";
         } else {
             storageForm = tempForm;
         }

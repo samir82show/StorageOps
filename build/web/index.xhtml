@@ -16,10 +16,9 @@
             <ui:define name = "container">
                 <div id="container">
                     <h:form id="contact" prependId="false">
-                        <div class="head">
-                            <h2>Storage NAS Request Form</h2>
-                        </div>
                         <h:panelGrid id="form_table" columns="2">
+                            <h2>Storage NAS Request Form</h2>
+                            <h:message for="reserving column"/>
                             <h:inputText a:placeholder="ITSM Request No." id="RequestNo" validatorMessage="ITSM request should be in the format RF12345"
                                          value="#{controller.storageForm.requestNo}" title="ITSMRequestNo" autocomplete="off">
                                 <f:validateRegex pattern="RF[\d]+"/>
@@ -39,7 +38,7 @@
                             <h:inputText a:placeholder="Size (GBs)" id="sizeInGB" autocomplete="off" value="#{controller.storageForm.size}" title="SizeInGB" 
                                          required="true" requiredMessage="The Size field is required."/>
                             <h:message id="size_message" for="sizeInGB" style="color:red"/>
-                            <h:inputText a:placeholder="Expected Growth (GBs)" autocomplete="off" id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" 
+                            <h:inputText a:placeholder="Expected Growth (GBs) per Year" autocomplete="off" id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" 
                                          title="ExpectedGrowth" required="true" 
                                          requiredMessage="The Expected Growth field is required."/>
                             <h:message id="growth_message" for="expectedGrowth" style="color:red"/>

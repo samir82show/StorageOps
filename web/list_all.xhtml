@@ -20,13 +20,13 @@
                     <h:dataTable id="request_table" value="#{controller.listStorageForms()}" var="item" border="1">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="RequestNo"/>
+                                <h:outputText value="Request No"/>
                             </f:facet>
                             <h:outputText value="#{item.requestNo}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="ShareName"/>
+                                <h:outputText value="Share Name"/>
                             </f:facet>
                             <h:outputText value="#{item.shareName}"/>
                         </h:column>
@@ -39,38 +39,38 @@
 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="ExpectedGrowth (GBs)"/>
+                                <h:outputText value="Expected Growth (GBs)"/>
                             </f:facet>
                             <h:outputText value="#{item.expectedGrowth}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="ShareType"/>
+                                <h:outputText value="Share Type"/>
                             </f:facet>
                             <h:outputText value="#{item.shareType}"/>
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="OwnerEmail"/>
+                                <h:outputText value="Owner Email"/>
                             </f:facet>
                             <h:outputText value="#{item.ownerEmail}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="TargetHosts"/>
+                                <h:outputText value="Target Hosts"/>
                             </f:facet>
                             <h:outputText value="#{item.targetHosts}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="TeamEmail"/>
+                                <h:outputText value="Team Email"/>
                             </f:facet>
                             <h:outputText value="#{item.teamEmail}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="LastUpdatedDate"/>
+                                <h:outputText value="Last Updated Date"/>
                             </f:facet>
                             <h:outputText value="#{item.lastUpdatedDate}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -94,9 +94,10 @@
                             </f:facet>
                             <h:outputText value="#{item.comments}"/>
                         </h:column>
-
                     </h:dataTable>
                 </h:form>
+                <h:link id="update_form" value="Update Form" outcome="search"/>
+
             </ui:define> 
 
         </ui:composition>

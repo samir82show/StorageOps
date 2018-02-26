@@ -29,20 +29,20 @@ function startTime() {
     var day = mydate.getDay(); // Current Day of week - 2
     var month = mydate.getMonth(); // Current Month 2
     var daym = mydate.getDate(); // Current Date -24
-    var h = mydate.getHours(); //Hours
-    var m = mydate.getMinutes();//Minutes
-    var s = mydate.getSeconds();//Seconds
-    m = checkTime(m);
-    s = checkTime(s);
+//    var h = mydate.getHours(); //Hours
+//    var m = mydate.getMinutes();//Minutes
+//    var s = mydate.getSeconds();//Seconds
+//    m = checkTime(m);
+//    s = checkTime(s);
 
     var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
     var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
     document.getElementById('mydate').innerHTML = dayarray[day] + ", " + montharray[month] + " " + daym + " " + year;
 
-    var t = setTimeout(function () {
-        startTime();
-    }, 500);
+//    var t = setTimeout(function () {
+//        startTime();
+//    }, 500);
 
 //    var today = new Date();
 //    var d = today.getDay();
@@ -58,10 +58,10 @@ function startTime() {
 //    document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
 }
 
-function checkTime(i) {
-    if (i < 10) {
-        i = "0" + i;
-    }
-    return i;
-}
+//function checkTime(i) {
+//    if (i < 10) {
+//        i = "0" + i;
+//    }
+//    return i;
+//}
 

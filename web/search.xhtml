@@ -31,17 +31,17 @@
                     <h:panelGrid id="search_table" columns="2">
                         <h:inputText id="tags" value="#{controller.storageForm.requestNo}" style="width: 200px;"/>
                         <h:commandButton id="find_button" class="button" value="Find Request" action="#{controller.fetchForm()}">
-                            <f:ajax execute="search_box" render=":contact"/>
+                            <f:ajax execute="search_box" render=":contact :result"/>
                         </h:commandButton>
                     </h:panelGrid>
                 </h:form>
 
                 <h:form id="contact" prependId="false">
                     <div class="container">
-                        <div class="head">
-                            <h2>Storage NAS Request Form</h2>
-                        </div>
                         <h:panelGrid id="form_table" columns="3">
+                            <h:message for="reserving column1"/>
+                            <h2>Update Form</h2>
+                            <h:message for="reserving column2"/>
                             <h:outputLabel value="ITSM Request No.:" for="ITSMRequestNo" />
                             <h:inputText style="margin-right: 0px;" id="RequestNo" validatorMessage="ITSM request should be in the format RF12345"
                                          value="#{controller.storageForm.requestNo}" title="ITSMRequestNo" autocomplete="off">
@@ -89,9 +89,12 @@
                         <h:commandButton id="search_button" value="Update" action="#{controller.editForm()}"/>
 
                     </div>
-                </h:form>        
-            </ui:define> 
+                </h:form>  
+                <br/>
+                <h:outputText id="result" style="color: red" value="#{controller.result}"/>
+                <h:link id="full_report" value="Full Report" outcome="list_all"/>
 
+            </ui:define> 
         </ui:composition>
 
         <h:outputScript library="js" name="script.js"/>

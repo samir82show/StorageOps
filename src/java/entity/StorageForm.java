@@ -110,7 +110,6 @@ public class StorageForm implements Serializable {
         this.createdBy = createdBy;
     }
 
-    
     public String getRequestNo() {
         return requestNo;
     }
@@ -168,6 +167,14 @@ public class StorageForm implements Serializable {
     }
 
     public String getTargetHosts() {
+//        String tempTargetHosts = "";
+//        if (targetHosts != null && targetHosts != "") {
+//
+//            for (String t : targetHosts.split("\\s+")) {
+//                tempTargetHosts += t + "<br />";
+//            }
+//            targetHosts = tempTargetHosts;
+//        }
         return targetHosts;
     }
 
