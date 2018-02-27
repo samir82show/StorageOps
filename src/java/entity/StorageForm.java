@@ -76,7 +76,7 @@ public class StorageForm implements Serializable {
     @NotNull
     @Column(name = "size")
     private Integer size;
-    @Size(max = 255)
+    @Size(max = 1073741823)
     @Column(name = "target_Hosts")
     private String targetHosts;
     @Basic(optional = false)
