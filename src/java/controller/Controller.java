@@ -1,5 +1,6 @@
 package controller;
 
+import entity.SendEmail;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
@@ -21,19 +22,24 @@ public class Controller implements Serializable {
     private StorageFormFacade storageFormFacade;
     @Inject
     private StorageForm storageForm;
+    @Inject
+    private SendEmail sendEmail;
+
+    private String result;
 
     @PostConstruct
     public void init() {
 //        storageForm.setComments("my comments");
 //        storageForm.setExpectedGrowth(3445);
-//        storageForm.setITSMRequestNo("rf123234");
-//        storageForm.setOwnerEmail("aaaaa@sidar.org");
-//        storageForm.setTeamEmail("aaaaa@sidar.org");
+//        storageForm.setRequestNo("RF123234");
+//        storageForm.setOwnerEmail("sawad@sidra.org");
+//        storageForm.setTeamEmail("aaaaa@sidra.org");
 //        storageForm.setShareName("share name");
 //        storageForm.setShareType("NFS");
-//        storageForm.setSizeInGB(4433);
+//        storageForm.setSize(4433);
 //        storageForm.setTargetHosts("1123...3434..345345");
-        storageForm.setRequestDate(new Date());
+        storageForm.setLastUpdatedDate(new Date());
+        storageForm.setCreatedBy("admin");
         storageForm.setStatus("New");
     }
 
@@ -41,46 +47,65 @@ public class Controller implements Serializable {
         return storageForm;
     }
 
+    public SendEmail getSendEmail() {
+        return sendEmail;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
     public void createStorageForm() {
-        if (storageFormFacade.find(storageForm.getITSMRequestNo()) == null) {
+        if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
             storageFormFacade.create(storageForm);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request form for " + storageForm.getShareName() + " submitted."));
-            storageForm.setComments(null);
-            storageForm.setExpectedGrowth(0);
-            storageForm.setITSMRequestNo(null);
-            storageForm.setOwnerEmail(null);
-            storageForm.setTeamEmail(null);
-            storageForm.setShareName(null);
-            storageForm.setShareType(null);
-            storageForm.setSizeInGB(0);
-            storageForm.setTargetHosts(null);
+            result = "Request form for " + storageForm.getShareName() + " submitted.";
+            sendEmail.sendEmailHelper(storageForm);
+            flushValues();
+
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getITSMRequestNo() + " already exists."));
+            result = "Request " + storageForm.getRequestNo() + " already exists.";
         }
     }
 
-//    public String findByShareName() {
-//        String str = "";
-//        for (String s : storageFormFacade.findByShareName()) {
-//            str += s + ",";
-//        }
-//        System.out.println("shares: " + str);
-//        return str.replaceAll(",$", "");
-//    }
+    public String findRequestNo() {
+        String str = "";
+        for (String s : storageFormFacade.findRequests()) {
+            str += s + ",";
+        }
+        return str.replaceAll(",$", "");
+    }
 
     public void fetchForm() {
-        StorageForm tempForm = storageFormFacade.find(storageForm.getITSMRequestNo());
+        StorageForm tempForm = storageFormFacade.find(storageForm.getRequestNo());
         if (tempForm == null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getITSMRequestNo() + " is not found."));
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " is not found."));
+            result = "Request " + storageForm.getRequestNo() + " is not found.";
         } else {
             storageForm = tempForm;
         }
-//        storageForm = storageFormFacade.find("rf11112");
-        System.out.println("form is: " + storageForm.getITSMRequestNo());
+    }
+
+    public void editForm() {
+        storageFormFacade.edit(storageForm);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Request " + storageForm.getRequestNo() + " is edited."));
+
     }
 
     public List<StorageForm> listStorageForms() {
         return storageFormFacade.findAll();
     }
 
+    public void flushValues() {
+        storageForm.setComments(null);
+        storageForm.setExpectedGrowth(null);
+        storageForm.setRequestNo(null);
+        storageForm.setOwnerEmail(null);
+        storageForm.setTeamEmail(null);
+        storageForm.setShareName(null);
+        storageForm.setShareType(null);
+        storageForm.setSize(null);
+        storageForm.setLastUpdatedDate(null);
+        storageForm.setStatus(null);
+        storageForm.setCreatedBy(null);
+    }
 }

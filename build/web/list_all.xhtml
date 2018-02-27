@@ -2,96 +2,105 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Storage Portal</title>
+        <link rel="shortcut icon" href=""/>
+        <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
     <h:body>
+        <ui:composition template="/resources/templates/template.xhtml">
 
-        <f:view>
+            <ui:define name = "container">
 
 
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{controller.listStorageForms()}" var="item">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ITSMRequestNo"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ITSMRequestNo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Comments"/>
-                        </f:facet>
-                        <h:outputText value="#{item.comments}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ExpectedGrowth"/>
-                        </f:facet>
-                        <h:outputText value="#{item.expectedGrowth}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="OwnerEmail"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ownerEmail}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ShareName"/>
-                        </f:facet>
-                        <h:outputText value="#{item.shareName}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ShareType"/>
-                        </f:facet>
-                        <h:outputText value="#{item.shareType}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="SizeInGB"/>
-                        </f:facet>
-                        <h:outputText value="#{item.sizeInGB}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="TargetHosts"/>
-                        </f:facet>
-                        <h:outputText value="#{item.targetHosts}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="TeamEmail"/>
-                        </f:facet>
-                        <h:outputText value="#{item.teamEmail}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="iTSMRequestNo"/>
-                        </f:facet>
-                        <h:outputText value="#{item.iTSMRequestNo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="RequestDate"/>
-                        </f:facet>
-                        <h:outputText value="#{item.requestDate}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Status"/>
-                        </f:facet>
-                        <h:outputText value="#{item.status}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-        </f:view>
+                <h:form id="report_table_form" prependId="false">
+                    <h1><h:outputText value="Report"/></h1>
+                    <h:dataTable id="request_table" value="#{controller.listStorageForms()}" var="item" border="1">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Request No"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requestNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Share Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.shareName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Size (GBs)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.size}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Expected Growth (GBs)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expectedGrowth}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Share Type"/>
+                            </f:facet>
+                            <h:outputText value="#{item.shareType}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Owner Email"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ownerEmail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Target Hosts"/>
+                            </f:facet>
+                            <h:outputText value="#{item.targetHosts}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Team Email"/>
+                            </f:facet>
+                            <h:outputText value="#{item.teamEmail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Last Updated Date"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastUpdatedDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CreatedBy"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createdBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Comments"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comments}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                <h:link id="update_form" value="Update Form" outcome="search"/>
+
+            </ui:define> 
+
+        </ui:composition>
 
 
     </h:body>
