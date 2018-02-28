@@ -87,7 +87,21 @@ public class SendEmail {
                     + "<th>Request Date</th>"
                     + "<td>" + storageForm.getLastUpdatedDate() + "</td>"
                     + "</tr>"
-                    + "</table>", "text/html");
+                    + "</table>"
+                    + "<br />"
+                    + "<h3>"
+                    + "For more details check below:"
+                    + "</h3>"
+                    + "<br />"
+                    + "<br />"
+                    + "<a href=\"https://mv3lscmt01tevc1:8181/StorageOps/list_all.jsf\">"
+                    + "Full Report"
+                    + "</a>"
+                    + "<br />"
+                    + "<br />"
+                    + "<a href=\"https://mv3lscmt01tevc1:8181/StorageOps/search.jsf\">"
+                    + "Search Form"
+                    + "</a>", "text/html");
 
             // Send message
             Transport.send(message2);
