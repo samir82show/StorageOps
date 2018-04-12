@@ -43,6 +43,21 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "StorageForm.findByStatus", query = "SELECT s FROM StorageForm s WHERE s.status = :status")})
 public class StorageForm implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "expected_growth")
+    private Integer expectedGrowth;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "size")
+    private Integer size;
+    @Size(max = 1073741823)
+    @Column(name = "department")
+    private String department;
+    @Size(max = 1073741823)
+    @Column(name = "division")
+    private String division;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -53,10 +68,6 @@ public class StorageForm implements Serializable {
     @Size(max = 255)
     @Column(name = "comments")
     private String comments;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "expected_growth")
-    private Integer expectedGrowth;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -72,10 +83,6 @@ public class StorageForm implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "share_type")
     private String shareType;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "size")
-    private Integer size;
     @Size(max = 1073741823)
     @Column(name = "target_Hosts")
     private String targetHosts;
@@ -158,13 +165,6 @@ public class StorageForm implements Serializable {
         this.shareType = shareType;
     }
 
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
-    }
 
     public String getTargetHosts() {
 //        String tempTargetHosts = "";
@@ -229,6 +229,30 @@ public class StorageForm implements Serializable {
     @Override
     public String toString() {
         return "StorageForm{" + "requestNo=" + requestNo + ", comments=" + comments + ", expectedGrowth=" + expectedGrowth + ", ownerEmail=" + ownerEmail + ", shareName=" + shareName + ", shareType=" + shareType + ", size=" + size + ", targetHosts=" + targetHosts + ", teamEmail=" + teamEmail + ", lastUpdatedDate=" + lastUpdatedDate + ", status=" + status + '}';
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
     }
 
 }

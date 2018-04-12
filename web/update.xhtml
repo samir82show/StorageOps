@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Update Form</title>
+        <link rel="shortcut icon" href=""/>
+        <h:outputStylesheet library="css" name="style.css"/>
+
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <h:outputScript library="js" name="jquery.js"/>
+        <h:outputScript library="js" name="jquery-ui.js"/>
+        <script>
+
+            $(function () {
+                var availableTags = "#{controller.findRequestNo()}".split(",");
+                $("#tags").autocomplete({
+                    source: availableTags
+                });
+            });
+        </script>
+
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/resources/templates/template.xhtml">
+
+            <ui:define name = "container">
+
+                <h:form id="search_box" prependId="false">
+                    <h:panelGrid id="search_table" columns="2">
+                        <h:inputText id="tags" value="#{controller.storageForm.requestNo}" style="width: 200px;"/>
+                        <h:commandButton id="find_button" class="button" value="Find Request" action="#{controller.fetchForm()}">
+                            <f:ajax execute="search_box" render=":contact :result"/>
+                        </h:commandButton>
+                    </h:panelGrid>
+                </h:form>
+                <h:form id="contact" prependId="false">
+                    <div class="container">
+                        <h:panelGrid id="form_table" columns="3">
+                            <h:message for="reserving column1"/>
+                            <h2>Update Form</h2>
+                            <h:message for="reserving column2"/>
+                            <h:outputLabel value="ITSM Request No.:" for="ITSMRequestNo" />
+                            <h:inputText style="margin-right: 0px;" id="RequestNo" validatorMessage="ITSM request should be in the format RF12345"
+                                         value="#{controller.storageForm.requestNo}" title="ITSMRequestNo" autocomplete="off">
+                                <f:validateRegex pattern="RF[\d]+"/>
+                            </h:inputText>
+                            <h:message for="RequestNo" style="color:red"/>
+                            <h:outputLabel value="Share Type:" for="shareType" />
+                            <h:selectOneListbox id="shareType" value="#{controller.storageForm.shareType}" 
+                                                title="ShareType" required="true" 
+                                                requiredMessage="The ShareType field is required." onchange="targetSwitch()">
+                                <f:selectItem itemValue="CIFS" itemLabel="Windows Share (CIFS)" />
+                                <f:selectItem itemValue="NFS" itemLabel="NFS" />
+                            </h:selectOneListbox>       
+                            <h:message for="shareType" style="color:red"/>
+
+                            <h:outputLabel value="Share Name:" for="shareName" />
+                            <h:inputText id="shareName" autocomplete="off" value="#{controller.storageForm.shareName}" 
+                                         title="ShareName" required="true" requiredMessage="The Share Name field is required."/>
+                            <h:message for="shareName" style="color:red"/>
+                            <h:outputLabel value="Size" for="size" />
+                            <h:inputText id="sizeInGB" autocomplete="off" value="#{controller.storageForm.size}" title="SizeInGB" 
+                                         required="true" requiredMessage="The Size field is required."/>
+                            <h:message for="sizeInGB" style="color:red"/>
+                            <h:outputLabel value="Expected Growth:" for="expectedGrowth" />
+                            <h:inputText autocomplete="off" id="expectedGrowth" value="#{controller.storageForm.expectedGrowth}" 
+                                         title="ExpectedGrowth" required="true" 
+                                         requiredMessage="The Expected Growth field is required."/>
+                            <h:message for="expectedGrowth" style="color:red"/>
+                            <h:outputLabel value="Target Hosts:" for="targetHosts" />
+                            <h:inputTextarea id="targetHosts" value="#{controller.storageForm.targetHosts}" 
+                                             title="TargetHosts"/>
+                            <h:message for="targetHosts" style="color:red"/>
+
+                            <h:outputLabel value="Owner Email:" for="ownerEmail" />
+                            <h:inputText id="ownerEmail" autocomplete="off" validatorMessage="Email should be in the format email@sidra.org"
+                                         value="#{controller.storageForm.ownerEmail}" title="OwnerEmail">
+                                <f:validateRegex pattern="^[A-Za-z0-9+_.-]+@sidra.org"/>
+                            </h:inputText>
+                            <h:message for="ownerEmail" style="color:red"/>
+                            <h:outputLabel value="Team Email:" for="teamEmail" />
+                            <h:inputText id="teamEmail" autocomplete="off" validatorMessage="Email should be in the format email@sidra.org" 
+                                         value="#{controller.storageForm.teamEmail}" title="TeamEmail">
+                                <f:validateRegex pattern="^[A-Za-z0-9+_.-]+@sidra.org"/>
+                            </h:inputText>
+                            <h:message for="teamEmail" style="color:red"/>
+                            <h:outputLabel value="Department:" for="department" />
+                            <h:inputText id="department" value="#{controller.storageForm.department}" title="Department"
+                                         required="true" requiredMessage="Department name is required."/>
+                            <h:message for="department" style="color:red"/>
+                            <h:outputLabel value="Division:" for="division" />
+                            <h:inputText id="division" value="#{controller.storageForm.division}" title="Division"
+                                         required="true" requiredMessage="Division name is required."/>
+                            <h:message for="division" style="color:red"/>
+                            <h:outputLabel value="Comments:" for="comments" />
+                            <h:inputText id="comments" value="#{controller.storageForm.comments}" title="Comments" />
+                        </h:panelGrid>
+                        <h:commandButton id="search_button" value="Update" action="#{controller.editForm()}"/>
+
+                    </div>
+                </h:form>  
+                <br/>
+                <h:outputText id="result" style="color: red" value="#{controller.result}"/>
+                <h:link id="full_report" value="Full Report" outcome="list_all?faces-redirect=true"/>
+            </ui:define> 
+        </ui:composition>
+
+        <h:outputScript library="js" name="script.js"/>
+
+
+
+    </h:body>
+</html>
+

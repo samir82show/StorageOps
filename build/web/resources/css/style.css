@@ -126,3 +126,49 @@ th {
     }
 }
 */
+
+
+
+/************************ dashboard *******************************/
+
+.back_cap {
+    width: 100px;
+    height: 30px;
+    float: right;
+}
+
+#chart1 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}
+
+#chart2 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}
+
+#chart3 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}
+
+#chart4 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}
+
+#chart5 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}
+
+#chart6 {
+    float: left;
+    width: 33%;
+    height: 50%;
+}

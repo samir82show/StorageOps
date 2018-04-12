@@ -1,6 +1,5 @@
 package controller;
 
-import entity.SendEmail;
 import entity.StorageForm;
 import entity.StorageFormFacade;
 import java.io.Serializable;
@@ -22,49 +21,24 @@ public class Controller implements Serializable {
     private StorageFormFacade storageFormFacade;
     @Inject
     private StorageForm storageForm;
-    @Inject
-    private SendEmail sendEmail;
 
     private String result;
 
     @PostConstruct
     public void init() {
-//        storageForm.setComments("my comments");
-//        storageForm.setExpectedGrowth(3445);
-//        storageForm.setRequestNo("RF123234");
-//        storageForm.setOwnerEmail("sawad@sidra.org");
-//        storageForm.setTeamEmail("aaaaa@sidra.org");
-//        storageForm.setShareName("share name");
-//        storageForm.setShareType("NFS");
-//        storageForm.setSize(4433);
-//        storageForm.setTargetHosts("1123...3434..345345");
         storageForm.setLastUpdatedDate(new Date());
         storageForm.setCreatedBy("admin");
         storageForm.setStatus("New");
     }
 
+
     public StorageForm getStorageForm() {
         return storageForm;
     }
 
-    public SendEmail getSendEmail() {
-        return sendEmail;
-    }
 
     public String getResult() {
         return result;
-    }
-
-    public void createStorageForm() {
-        if (storageFormFacade.find(storageForm.getRequestNo()) == null) {
-            storageFormFacade.create(storageForm);
-            result = "Request form for " + storageForm.getShareName() + " submitted.";
-            sendEmail.sendEmailHelper(storageForm);
-            flushValues();
-
-        } else {
-            result = "Request " + storageForm.getRequestNo() + " already exists.";
-        }
     }
 
     public String findRequestNo() {
@@ -95,17 +69,4 @@ public class Controller implements Serializable {
         return storageFormFacade.findAll();
     }
 
-    public void flushValues() {
-        storageForm.setComments(null);
-        storageForm.setExpectedGrowth(null);
-        storageForm.setRequestNo(null);
-        storageForm.setOwnerEmail(null);
-        storageForm.setTeamEmail(null);
-        storageForm.setShareName(null);
-        storageForm.setShareType(null);
-        storageForm.setSize(null);
-        storageForm.setLastUpdatedDate(null);
-        storageForm.setStatus(null);
-        storageForm.setCreatedBy(null);
-    }
 }
