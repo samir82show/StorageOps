@@ -13,73 +13,75 @@
         <ui:composition template="/resources/templates/template.xhtml">
 
             <ui:define name = "container">
+                <div>
+                    <h:form id="request_table" prependId="false">
+                        <h1><h:outputText value="Report"/></h1>
+                        <h:dataTable value="#{controller.listStorageForms()}" var="item" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="RequestNo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.requestNo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ShareName"/>
+                                </f:facet>
+                                <h:outputText value="#{item.shareName}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ShareType"/>
+                                </f:facet>
+                                <h:outputText value="#{item.shareType}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TargetHosts"/>
+                                </f:facet>
+                                <h:outputText value="#{item.targetHosts}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Size"/>
+                                </f:facet>
+                                <h:outputText value="#{item.size}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Department"/>
+                                </f:facet>
+                                <h:outputText value="#{item.department}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Division"/>
+                                </f:facet>
+                                <h:outputText value="#{item.division}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="OwnerEmail"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ownerEmail}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TeamEmail"/>
+                                </f:facet>
+                                <h:outputText value="#{item.teamEmail}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Comments"/>
+                                </f:facet>
+                                <h:outputText value="#{item.comments}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                    <h:link id="update_form" value="Update Form" outcome="update?faces-redirect=true"/>
 
-                <h:form id="report_table_form" prependId="false">
-                    <h1><h:outputText value="Report"/></h1>
-                    <h:dataTable value="#{controller.listStorageForms()}" var="item" border="1">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="RequestNo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.requestNo}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="ShareName"/>
-                            </f:facet>
-                            <h:outputText value="#{item.shareName}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="ShareType"/>
-                            </f:facet>
-                            <h:outputText value="#{item.shareType}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="TargetHosts"/>
-                            </f:facet>
-                            <h:outputText value="#{item.targetHosts}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Size"/>
-                            </f:facet>
-                            <h:outputText value="#{item.size}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Department"/>
-                            </f:facet>
-                            <h:outputText value="#{item.department}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Division"/>
-                            </f:facet>
-                            <h:outputText value="#{item.division}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="OwnerEmail"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ownerEmail}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="TeamEmail"/>
-                            </f:facet>
-                            <h:outputText value="#{item.teamEmail}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Comments"/>
-                            </f:facet>
-                            <h:outputText value="#{item.comments}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:form>
-                <h:link id="update_form" value="Update Form" outcome="update?faces-redirect=true"/>
+                </div>
 
             </ui:define> 
 
