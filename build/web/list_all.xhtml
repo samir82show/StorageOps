@@ -77,6 +77,12 @@
                                 </f:facet>
                                 <h:outputText value="#{item.comments}"/>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Action"/>
+                                </f:facet>
+                                <h:commandLink action="#{controller.delete(item)}" value="delete" onclick="return confirm('Are you sure you want to delete this item?');"/>
+                            </h:column>
                         </h:dataTable>
                     </h:form>
                     <h:link id="update_form" value="Update Form" outcome="update?faces-redirect=true"/>

@@ -65,6 +65,10 @@ public class Controller implements Serializable {
 
     }
 
+    public void delete(StorageForm storageForm) {
+        storageFormFacade.remove(storageForm);
+    }
+        
     public List<StorageForm> listStorageForms() {
         return storageFormFacade.findAll();
     }
