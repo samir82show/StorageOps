@@ -42,7 +42,7 @@ public class Controller implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "login";
+        return "login?faces-redirect=true";
     }
 
     public StorageForm getStorageForm() {
