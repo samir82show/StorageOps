@@ -11,8 +11,17 @@
     </h:head>
     <h:body>
         <ui:composition template="/resources/templates/template.xhtml">
-
             <ui:define name = "container">
+                <div style="margin-left: 200px;">
+                    <h3>Welcome #{controller.username}</h3>
+                    <h:form>
+                        <h:commandLink action="#{controller.logout()}" value="Logout"/>
+                    </h:form>
+                </div>
+                <div style="margin-right: 200px;">
+                    <h:link id="update_form" value="Update Form" outcome="update?faces-redirect=true"/>
+                </div>
+
                 <div>
                     <h:form id="request_table" prependId="false">
                         <h1><h:outputText value="Report"/></h1>
@@ -85,7 +94,6 @@
                             </h:column>
                         </h:dataTable>
                     </h:form>
-                    <h:link id="update_form" value="Update Form" outcome="update?faces-redirect=true"/>
 
                 </div>
 

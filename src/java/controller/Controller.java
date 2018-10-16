@@ -21,7 +21,7 @@ public class Controller implements Serializable {
     private StorageFormFacade storageFormFacade;
     @Inject
     private StorageForm storageForm;
-
+    private String username;
     private String result;
 
     @PostConstruct
@@ -31,6 +31,19 @@ public class Controller implements Serializable {
         storageForm.setStatus("New");
     }
 
+    public String getUsername() {
+        username = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().toString();
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
+    }
 
     public StorageForm getStorageForm() {
         return storageForm;
