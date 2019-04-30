@@ -32,23 +32,17 @@ public class Controller implements Serializable {
     }
 
     public String getUsername() {
-        username = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().toString();
+//        username = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().toString();
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "login?faces-redirect=true";
-    }
-
+    
     public StorageForm getStorageForm() {
         return storageForm;
     }
-
 
     public String getResult() {
         return result;
